@@ -1,0 +1,73 @@
+<dialog id="booking-modal" class="p-0 rounded-lg shadow-2xl backdrop:bg-black/50 w-full max-w-lg">
+    <div class="bg-white p-8 relative">
+        <button onclick="this.closest('dialog').close()" class="absolute top-4 right-4 text-2xl">&times;</button>
+        
+        <h3 class="text-2xl text-[#8c9c4c] font-serif mb-2">Buchungsanfrage</h3>
+        <p class="text-gray-500 text-sm mb-6">Schicken Sie uns Ihre Anfrage. Wir bestätigen, ob der Termin frei ist.</p>
+        
+        <form id="request-form" class="space-y-4">
+            <input type="text" name="name" placeholder="Ihr Vorname und Nachname" required 
+                   class="w-full bg-gray-100 p-3 rounded border-none focus:ring-2 focus:ring-[#8c9c4c]">
+            
+            <div class="grid grid-cols-2 gap-4">
+                <input type="email" name="email" placeholder="Ihr E-Mail" required 
+                       class="w-full bg-gray-100 p-3 rounded">
+                <input type="tel" name="phone" placeholder="Ihre Telefonnummer" 
+                       class="w-full bg-gray-100 p-3 rounded">
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="text-xs text-gray-500 ml-1">Anreise</label>
+                    <input type="date" name="start" required class="w-full bg-gray-100 p-3 rounded">
+                </div>
+                <div>
+                    <label class="text-xs text-gray-500 ml-1">Abreise</label>
+                    <input type="date" name="end" required class="w-full bg-gray-100 p-3 rounded">
+                </div>
+            </div>
+
+            <div class="flex items-start gap-2 text-sm text-gray-600">
+                <input type="checkbox" required id="dsgvo" class="mt-1">
+                <label for="dsgvo">Ich stimme der Datenschutzerklärung zu.</label>
+            </div>
+
+            <button type="submit" class="w-full bg-[#8c9c4c] text-white py-3 font-bold rounded hover:bg-[#7a8a3b] transition">
+                Anfrage senden
+            </button>
+        </form>
+        <div id="form-feedback" class="hidden mt-4 text-center text-green-600"></div>
+    </div>
+</dialog>
+
+<script>
+    // AJAX Submit Logic
+    document.getElementById('request-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        const btn = e.target.querySelector('button');
+        btn.disabled = true;
+        btn.innerText = "Sende...";
+
+        // Aufruf der Cloudflare Function
+        try {
+            const res = await fetch('/api/submit-request', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {'Content-Type': 'application/json'}
+            });
+            
+            if(res.ok) {
+                document.getElementById('request-form').classList.add('hidden');
+                const feedback = document.getElementById('form-feedback');
+                feedback.innerText = "Vielen Dank! Wir haben Ihre Anfrage erhalten.";
+                feedback.classList.remove('hidden');
+            }
+        } catch(err) {
+            alert("Fehler beim Senden.");
+            btn.disabled = false;
+        }
+    });
+</script>

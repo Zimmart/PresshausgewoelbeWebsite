@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BookingModal from '../components/BookingModal.astro';
+---
+
+<Layout>
+    <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <img src="/hero-presshaus.jpg" alt="Presshaus" class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/30"></div> <div class="relative z-10 text-center text-white" data-aos="fade-up">
+            <h1 class="text-6xl font-serif mb-4">Urlaub im Presshaus</h1>
+            <p class="text-xl mb-8">Authentisch. Ruhig. Historisch.</p>
+            <button onclick="document.getElementById('booking-modal').showModal()" 
+                    class="bg-[#8c9c4c] hover:bg-[#7a8a3b] text-white px-8 py-3 text-lg rounded transition">
+                Jetzt anfragen
+            </button>
+        </div>
+    </header>
+
+    <section class="py-20 container mx-auto px-4 text-center max-w-3xl" data-aos="fade-up">
+        <h2 class="text-4xl font-serif text-[#8c9c4c] mb-6">Die Philosophie</h2>
+        <p class="leading-relaxed text-gray-600">
+            Unser liebevoll restauriertes Presshaus bietet... (Hier kommt dein Text über die Geschichte)
+        </p>
+    </section>
+
+    <section class="py-10 bg-white">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <img src="/img1.jpg" class="w-full h-64 object-cover rounded shadow" data-aos="fade-up" data-aos-delay="0">
+            <img src="/img2.jpg" class="w-full h-64 object-cover rounded shadow" data-aos="fade-up" data-aos-delay="100">
+            <img src="/img3.jpg" class="w-full h-64 object-cover rounded shadow" data-aos="fade-up" data-aos-delay="200">
+            </div>
+    </section>
+
+    <section class="py-20 bg-[#fdfbf7]">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12">
+            <div class="bg-white p-8 shadow-lg text-center" data-aos="fade-right">
+                <h3 class="text-2xl text-[#8c9c4c] font-serif mb-4">Das Presshaus</h3>
+                <img src="/room1.jpg" class="w-full h-48 object-cover mb-4">
+                <ul class="text-sm space-y-2 mb-6 text-gray-600">
+                    <li>Für 2-4 Personen</li>
+                    <li>Inkl. Frühstückskorb</li>
+                </ul>
+                <div class="text-xl font-bold mb-4">ab 90€ / Nacht</div>
+            </div>
+             </div>
+    </section>
+
+    <footer class="bg-[#8c9c4c] text-white py-12 text-center">
+        </footer>
+
+    <BookingModal />
+</Layout>

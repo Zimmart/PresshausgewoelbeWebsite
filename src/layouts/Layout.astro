@@ -1,0 +1,25 @@
+---
+// src/layouts/Layout.astro
+import '../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Das Presshaus - Urlaub im Weinberg</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body class="font-sans text-gray-800 bg-[#fdfbf7]"> <slot />
+    
+    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline>
+        // Initialisiere Animationen
+        AOS.init({
+            duration: 800, // Dauer in ms
+            once: true,    // Animation nur einmal abspielen
+            offset: 100,   // Startet etwas früher
+        });
+    </script>
+</body>
+</html>
