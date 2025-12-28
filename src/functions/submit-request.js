@@ -1,15 +1,17 @@
-// functions/api/submit-request.js
+/**
+ * Handles the POST request from the booking form
+ * @param {Object} context - Cloudflare Pages context
+ */
 export async function onRequestPost({ request, env }) {
   try {
     const data = await request.json();
 
-    // Validierung (simpel)
-    if (!data.email || !data.start || !data.end) {
-      return new Response("Fehlende Daten", { status: 400 });
+    // Basic Validation
+    if (!data.name || !data.email || !data.start) {
+      return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
     }
 
-    // Email senden via Resend API
-    // Du musst RESEND_API_KEY in den Cloudflare Dashboard Settings hinterlegen!
+    // Call Resend API to send the email
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -17,14 +19,19 @@ export async function onRequestPost({ request, env }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "buchung@deine-domain.at", // Muss bei Resend verifiziert sein
-        to: ["deine-private-mail@gmail.com"], // Hierhin geht die Anfrage
-        subject: `Neue Anfrage: ${data.name}`,
+        from: "Anfrage <onboarding@resend.dev>", // Change this once you verified your own domain
+        to: ["zimart.martin@gmail.com"], // <--- REPLACE THIS WITH YOUR EMAIL
+        subject: `Neue Anfrage Presshaus: ${data.name}`,
         html: `
-          <h1>Neue Buchungsanfrage</h1>
-          <p><strong>Gast:</strong> ${data.name} (${data.email})</p>
-          <p><strong>Zeitraum:</strong> ${data.start} bis ${data.end}</p>
-          <p><strong>Telefon:</strong> ${data.phone}</p>
+          <div style="font-family: sans-serif; color: #333;">
+            <h2 style="color: #8c9c4c;">Neue Buchungsanfrage</h2>
+            <p><strong>Gast:</strong> ${data.name}</p>
+            <p><strong>Email:</strong> ${data.email}</p>
+            <p><strong>Telefon:</strong> ${data.phone || '-'}</p>
+            <hr>
+            <p><strong>Zeitraum:</strong> ${data.start} bis ${data.end}</p>
+            <p><strong>Hinweis:</strong> Bitte antworte dem Gast direkt via Email.</p>
+          </div>
         `,
       }),
     });
@@ -32,10 +39,11 @@ export async function onRequestPost({ request, env }) {
     if (res.ok) {
       return new Response(JSON.stringify({ success: true }), { status: 200 });
     } else {
-      return new Response("Email Provider Error", { status: 500 });
+      const errorText = await res.text();
+      return new Response(JSON.stringify({ error: errorText }), { status: 500 });
     }
 
   } catch (err) {
-    return new Response(err.message, { status: 500 });
+    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
   }
 }

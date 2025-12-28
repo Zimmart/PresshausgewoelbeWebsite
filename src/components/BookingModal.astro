@@ -1,73 +1,127 @@
-<dialog id="booking-modal" class="p-0 rounded-lg shadow-2xl backdrop:bg-black/50 w-full max-w-lg">
-    <div class="bg-white p-8 relative">
-        <button onclick="this.closest('dialog').close()" class="absolute top-4 right-4 text-2xl">&times;</button>
-        
-        <h3 class="text-2xl text-[#8c9c4c] font-serif mb-2">Buchungsanfrage</h3>
-        <p class="text-gray-500 text-sm mb-6">Schicken Sie uns Ihre Anfrage. Wir bestätigen, ob der Termin frei ist.</p>
-        
-        <form id="request-form" class="space-y-4">
-            <input type="text" name="name" placeholder="Ihr Vorname und Nachname" required 
-                   class="w-full bg-gray-100 p-3 rounded border-none focus:ring-2 focus:ring-[#8c9c4c]">
-            
-            <div class="grid grid-cols-2 gap-4">
-                <input type="email" name="email" placeholder="Ihr E-Mail" required 
-                       class="w-full bg-gray-100 p-3 rounded">
-                <input type="tel" name="phone" placeholder="Ihre Telefonnummer" 
-                       class="w-full bg-gray-100 p-3 rounded">
-            </div>
+<dialog id="booking-dialog" class="backdrop:bg-black/60 bg-transparent p-0 m-auto rounded shadow-2xl open:animate-fade-in max-w-lg w-full">
+    
+    <div class="bg-white relative flex flex-col max-h-[90vh] overflow-y-auto">
+        <button onclick="document.getElementById('booking-dialog').close()" class="absolute top-3 right-3 z-10 text-gray-500 hover:text-black text-3xl font-bold">&times;</button>
 
-            <div class="grid grid-cols-2 gap-4">
+        <div class="h-40 bg-gray-200 shrink-0">
+             <img src="/images/Wohnzimmer.jpg" alt="Zimmer" class="w-full h-full object-cover">
+        </div>
+
+        <div class="p-8">
+            <h3 class="text-2xl text-brand-green font-serif mb-2">Buchungsanfrage</h3>
+            <p class="text-sm text-gray-500 mb-6">Schicken Sie uns Ihre Anfrage. Wir bestätigen die Verfügbarkeit umgehend.</p>
+
+            <form id="inquiry-form" class="space-y-4">
+                
                 <div>
-                    <label class="text-xs text-gray-500 ml-1">Anreise</label>
-                    <input type="date" name="start" required class="w-full bg-gray-100 p-3 rounded">
+                    <input type="text" name="name" required placeholder="Ihr Vorname und Nachname" 
+                    class="w-full bg-[#f0f0f0] p-3 rounded text-gray-700 focus:bg-white focus:ring-2 focus:ring-brand-green placeholder-gray-400">
                 </div>
-                <div>
-                    <label class="text-xs text-gray-500 ml-1">Abreise</label>
-                    <input type="date" name="end" required class="w-full bg-gray-100 p-3 rounded">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="email" name="email" required placeholder="Ihr E-Mail" 
+                    class="w-full bg-[#f0f0f0] p-3 rounded focus:bg-white focus:ring-2 focus:ring-brand-green">
+                    
+                    <input type="tel" name="phone" placeholder="Telefonnummer" 
+                    class="w-full bg-[#f0f0f0] p-3 rounded focus:bg-white focus:ring-2 focus:ring-brand-green">
                 </div>
-            </div>
 
-            <div class="flex items-start gap-2 text-sm text-gray-600">
-                <input type="checkbox" required id="dsgvo" class="mt-1">
-                <label for="dsgvo">Ich stimme der Datenschutzerklärung zu.</label>
-            </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs text-gray-500 ml-1 block mb-1">Anreise</label>
+                        <input type="date" name="start" required 
+                        class="w-full bg-[#f0f0f0] p-3 rounded text-gray-600 focus:ring-2 focus:ring-brand-green">
+                    </div>
+                    <div>
+                        <label class="text-xs text-gray-500 ml-1 block mb-1">Abreise</label>
+                        <input type="date" name="end" required 
+                        class="w-full bg-[#f0f0f0] p-3 rounded text-gray-600 focus:ring-2 focus:ring-brand-green">
+                    </div>
+                </div>
 
-            <button type="submit" class="w-full bg-[#8c9c4c] text-white py-3 font-bold rounded hover:bg-[#7a8a3b] transition">
-                Anfrage senden
-            </button>
-        </form>
-        <div id="form-feedback" class="hidden mt-4 text-center text-green-600"></div>
+                <div class="flex items-start gap-3 mt-2">
+                    <input type="checkbox" required id="privacy" class="mt-1 accent-brand-green w-4 h-4">
+                    <label for="privacy" class="text-xs text-gray-500 leading-snug">
+                        Hiermit bestätigen Sie, dass Sie die <a href="#" class="underline text-brand-green">Datenschutzerklärung</a> gelesen haben.
+                    </label>
+                </div>
+
+                <button type="submit" id="submit-btn" class="w-full bg-brand-green hover:bg-brand-dark text-white py-3 mt-4 font-bold uppercase tracking-wider transition-colors">
+                    Anfrage Senden
+                </button>
+
+                <div id="form-message" class="hidden text-center p-3 rounded mt-2 text-sm"></div>
+            </form>
+        </div>
     </div>
 </dialog>
 
 <script>
-    // AJAX Submit Logic
-    document.getElementById('request-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-        
-        const btn = e.target.querySelector('button');
-        btn.disabled = true;
-        btn.innerText = "Sende...";
+    const form = document.getElementById('inquiry-form') as HTMLFormElement;
+    const messageEl = document.getElementById('form-message');
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
 
-        // Aufruf der Cloudflare Function
+    form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // UI Feedback: Loading
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Sende...";
+        submitBtn.classList.add('opacity-50');
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
         try {
-            const res = await fetch('/api/submit-request', {
+            // Send to Cloudflare Function
+            const response = await fetch('/api/submit-request', {
                 method: 'POST',
-                body: JSON.stringify(data),
-                headers: {'Content-Type': 'application/json'}
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             });
-            
-            if(res.ok) {
-                document.getElementById('request-form').classList.add('hidden');
-                const feedback = document.getElementById('form-feedback');
-                feedback.innerText = "Vielen Dank! Wir haben Ihre Anfrage erhalten.";
-                feedback.classList.remove('hidden');
+
+            if (response.ok) {
+                // Success State
+                form.reset();
+                messageEl.innerText = "Vielen Dank! Ihre Anfrage wurde erfolgreich versendet.";
+                messageEl.className = "block mt-4 text-green-700 bg-green-100 p-3 rounded";
+                setTimeout(() => {
+                    (document.getElementById('booking-dialog') as HTMLDialogElement).close();
+                    // Reset UI
+                    messageEl.classList.add('hidden');
+                    submitBtn.innerText = "Anfrage Senden";
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-50');
+                }, 3000);
+            } else {
+                throw new Error('Server error');
             }
-        } catch(err) {
-            alert("Fehler beim Senden.");
-            btn.disabled = false;
+        } catch (error) {
+            // Error State
+            messageEl.innerText = "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.";
+            messageEl.className = "block mt-4 text-red-700 bg-red-100 p-3 rounded";
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Anfrage Senden";
+            submitBtn.classList.remove('opacity-50');
+        }
+    });
+
+    // Close dialog when clicking outside
+    const dialog = document.getElementById('booking-dialog');
+    dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) {
+            (dialog as HTMLDialogElement).close();
         }
     });
 </script>
+
+<style>
+    /* Slight animation for the modal appearing */
+    dialog[open] {
+        animation: fade-in 0.3s ease-out;
+    }
+    @keyframes fade-in {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
