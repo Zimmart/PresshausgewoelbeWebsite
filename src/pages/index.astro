@@ -12,12 +12,18 @@ import BookingModal from '../components/BookingModal.astro';
         </div>
         <div class="absolute inset-0 bg-black/30"></div>
 
-        <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
-            <span class="font-script text-5xl md:text-7xl mb-2 block text-[#e8f0d3]">Urlaub im</span>
-            <h1 class="text-5xl md:text-8xl font-serif mb-8 tracking-wide drop-shadow-lg">Presshausgewölbe</h1>
+        <div class="relative z-10 text-center text-white px-4 w-full max-w-screen-xl mx-auto" data-aos="fade-up">
+            
+            <span class="font-script text-3xl md:text-7xl mb-2 block text-[#e8f0d3]">
+                Urlaub im
+            </span>
+            
+            <h1 class="text-3xl sm:text-5xl md:text-8xl font-serif mb-8 tracking-wide drop-shadow-lg break-words">
+                Presshausgewölbe
+            </h1>
             
             <button onclick="document.getElementById('booking-dialog').showModal()" 
-                class="bg-brand-green hover:bg-brand-dark text-white px-10 py-4 text-lg uppercase tracking-widest font-bold transition-colors duration-300 shadow-lg border border-white/20">
+                class="bg-brand-green hover:bg-brand-dark text-white px-6 py-3 md:px-10 md:py-4 text-sm md:text-lg uppercase tracking-widest font-bold transition-colors duration-300 shadow-lg border border-white/20 rounded">
                 Jetzt Anfragen
             </button>
         </div>

@@ -15,6 +15,14 @@ body {
     @apply text-brand-text font-sans;
 }
 
+html, body {
+    overflow-x: hidden; /* Verhindert seitliches Scrollen komplett */
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
 h1, h2, h3 {
     @apply font-serif;
 }
