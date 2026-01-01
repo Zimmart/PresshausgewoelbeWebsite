@@ -4,153 +4,187 @@ import Layout from '../layouts/Layout.astro';
 import BookingModal from '../components/BookingModal.astro';
 ---
 
-<Layout title="Das Presshaus - Urlaub im Weinberg">
-	
-	<header class="relative h-[85vh] flex items-center justify-center overflow-hidden">
-		<div class="absolute inset-0 bg-gray-300">
-			<img src="/images/Aussenansicht.jpg" alt="Presshaus Außenansicht" class="w-full h-full object-cover opacity-90" />
-		</div>
-		<div class="absolute inset-0 bg-black/30"></div>
-
-		<div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
-			<span class="font-script text-5xl md:text-7xl mb-2 block text-[#e8f0d3]">Urlaub im</span>
-			<h1 class="text-5xl md:text-8xl font-serif mb-8 tracking-wide drop-shadow-lg">Presshausgewölbe</h1>
-			
-			<button onclick="document.getElementById('booking-dialog').showModal()" 
-				class="bg-brand-green hover:bg-brand-dark text-white px-10 py-4 text-lg uppercase tracking-widest font-bold transition-colors duration-300 shadow-lg border border-white/20">
-				Jetzt Anfragen
-			</button>
-		</div>
-	</header>
-
-	<section class="py-24 px-4 bg-brand-bg text-center">
-		<div class="max-w-3xl mx-auto" data-aos="fade-up">
-			<h2 class="font-script text-6xl text-brand-green mb-6">Die Philosophie</h2>
-			<p class="text-lg leading-loose text-gray-600 font-serif">
-				Verbringen Sie erholsame Tage in unserem liebevoll restaurierten Presshaus. 
-				Wo früher Wein gekeltert wurde, finden Sie heute Ruhe, Natur und Geschichte. 
-				Genießen Sie den Blick über die Weinberge und lassen Sie die Seele baumeln.
-			</p>
-		</div>
-	</section>
-
-	<section class="py-16 bg-white overflow-hidden">
-        <div class="container mx-auto px-4 mb-8 text-center" data-aos="fade-up">
-            <h2 class="font-script text-5xl text-brand-green">Einblicke</h2>
-            <p class="text-gray-400 text-sm mt-2 font-sans tracking-wide uppercase">Wischen oder Klicken zum Vergrößern</p>
+<Layout title="Das Presshausgewölbe - Urlaub im Weinberg">
+    
+    <header class="relative h-[85vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gray-300">
+            <img src="/images/Aussenansicht.jpg" alt="Presshaus Außenansicht" class="w-full h-full object-cover opacity-90" />
         </div>
+        <div class="absolute inset-0 bg-black/30"></div>
 
-        <div class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-4 pb-8 no-scrollbar items-center" data-aos="fade-up" data-aos-delay="200">
+        <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+            <span class="font-script text-5xl md:text-7xl mb-2 block text-[#e8f0d3]">Urlaub im</span>
+            <h1 class="text-5xl md:text-8xl font-serif mb-8 tracking-wide drop-shadow-lg">Presshausgewölbe</h1>
             
-            <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
-                 onclick="openLightbox('/images/Wohnzimmer.jpg')">
-                <img src="/images/Wohnzimmer.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Wohnzimmer">
-                <div class="text-center text-xs text-gray-500 mt-2">Wohnbereich</div>
-            </div>
+            <button onclick="document.getElementById('booking-dialog').showModal()" 
+                class="bg-brand-green hover:bg-brand-dark text-white px-10 py-4 text-lg uppercase tracking-widest font-bold transition-colors duration-300 shadow-lg border border-white/20">
+                Jetzt Anfragen
+            </button>
+        </div>
+    </header>
 
-            <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
-                 onclick="openLightbox('/images/Schlafzimmer.jpg')">
-                <img src="/images/Schlafzimmer.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Schlafzimmer">
-                <div class="text-center text-xs text-gray-500 mt-2">Schlafzimmer</div>
-            </div>
-
-            <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
-                 onclick="openLightbox('/images/Kueche.jpg')">
-                <img src="/images/Kueche.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Küche">
-                <div class="text-center text-xs text-gray-500 mt-2">Küche</div>
-            </div>
-
-            <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
-                 onclick="openLightbox('/images/Bad.jpg')">
-                <img src="/images/Bad.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Badezimmer">
-                <div class="text-center text-xs text-gray-500 mt-2">Bad</div>
-            </div>
-
-             <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
-             onclick="openLightbox('/images/Ausenplatz.jpg')">
-                <img src="/images/Ausenplatz.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Sitzplatz außen">
-                <div class="text-center text-xs text-gray-500 mt-2">Terrasse</div>
-            </div>
-
-             <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
-             onclick="openLightbox('/images/Radlerrast.jpg')">
-                <img src="/images/Radlerrast.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Rastplatz">
-                <div class="text-center text-xs text-gray-500 mt-2">Garten</div>
-            </div>
-
+    <section class="py-24 px-4 bg-brand-bg text-center">
+        <div class="max-w-3xl mx-auto" data-aos="fade-up">
+            <h2 class="font-script text-6xl text-brand-green mb-6">Die Philosophie</h2>
+            <p class="text-lg leading-loose text-gray-600 font-serif">
+                Verbringen Sie erholsame Tage in unserem liebevoll restaurierten Presshaus. 
+                Wo früher Wein gekeltert wurde, finden Sie heute Ruhe, Natur und Geschichte. 
+                Genießen Sie die Ruhe und entdecken Sie die weitläufigen Radwege durch die Reben.
+            </p>
         </div>
     </section>
 
-	<section class="py-24 bg-brand-bg">
-		<div class="container mx-auto px-4">
-			<div class="text-center mb-16" data-aos="fade-up">
-				<h2 class="font-script text-6xl text-brand-green">Wohnen & Preise</h2>
-			</div>
+    <section class="py-16 bg-white overflow-hidden relative">
+        <div class="container mx-auto px-4 mb-8 text-center" data-aos="fade-up">
+            <h2 class="font-script text-5xl text-brand-green">Einblicke</h2>
+            <p class="text-gray-400 text-sm mt-2 font-sans tracking-wide uppercase">Klicken zum Vergrößern</p>
+        </div>
 
-			<div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-				<div class="bg-white p-8 shadow-xl text-center border-t-4 border-brand-green relative group" data-aos="fade-right">
-					<h3 class="text-2xl font-bold uppercase tracking-widest mb-4">Das Presshaus</h3>
-					<div class="h-56 bg-gray-200 mb-6 overflow-hidden relative">
-						<img src="/images/Schlafzimmer.jpg" class="w-full h-full object-cover transition transform duration-700 group-hover:scale-110" alt="Zimmer">
-					</div>
-					<ul class="space-y-3 text-gray-600 mb-8 font-serif text-lg">
-						<li>2-4 Personen</li>
-						<li>Voll ausgestattete Küche</li>
-						<li>Kaminofen & Terrasse</li>
-						<li>Inkl. WLAN & Parkplatz</li>
-					</ul>
-					<div class="text-3xl text-brand-green font-bold mb-2">ab 90€ <span class="text-sm text-gray-400 font-normal">/ Nacht</span></div>
-					<button onclick="document.getElementById('booking-dialog').showModal()" class="text-brand-green underline hover:text-brand-dark uppercase text-sm font-bold tracking-widest mt-4">Anfragen</button>
-				</div>
+        <div class="relative group max-w-full" data-aos="fade-up" data-aos-delay="200">
+            
+            <button id="scroll-left" class="absolute left-2 md:left-10 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-brand-green p-3 rounded-full shadow-lg transition-all opacity-0 md:opacity-70 group-hover:opacity-100 hidden md:flex items-center justify-center transform hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+            </button>
 
-				<div class="bg-white p-8 shadow-xl text-center border-t-4 border-brand-green relative group" data-aos="fade-left">
-					<h3 class="text-2xl font-bold uppercase tracking-widest mb-4">Genuss</h3>
-					<div class="h-56 bg-gray-200 mb-6 overflow-hidden relative">
-						<img src="/images/Fruehstueckskorb.jpg" class="w-full h-full object-cover transition transform duration-700 group-hover:scale-110" alt="Frühstück">
-					</div>
-					<ul class="space-y-3 text-gray-600 mb-8 font-serif text-lg">
-						<li>Regionaler Frühstückskorb (+15€/P)</li>
-						<li>Weinverkostung im Keller</li>
-						<li>E-Bike Verleih</li>
-						<li>Endreinigung inklusive</li>
-					</ul>
-					<div class="text-3xl text-brand-green font-bold mb-2">Individuell</div>
-					<button onclick="document.getElementById('booking-dialog').showModal()" class="text-brand-green underline hover:text-brand-dark uppercase text-sm font-bold tracking-widest mt-4">Dazu buchen</button>
-				</div>
-			</div>
-		</div>
-	</section>
+            <div id="gallery-slider" class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-4 pb-8 no-scrollbar items-center scroll-smooth">
+                
+                <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                     onclick="openLightbox('/images/Wohnzimmer.jpg')">
+                    <img src="/images/Wohnzimmer.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Wohnzimmer">
+                    <div class="text-center text-xs text-gray-500 mt-2">Wohnbereich</div>
+                </div>
 
-	<footer class="bg-[#e9e6df] py-16 text-center text-brand-text border-t border-[#dcd8ce]">
-		<div class="container mx-auto px-4" data-aos="fade-up">
-			<h4 class="font-script text-5xl text-brand-green mb-10">Kontakt</h4>
-			
-			<div class="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto text-base leading-loose font-serif">
-				<div>
-					<strong class="block uppercase tracking-widest mb-3 font-sans text-xs text-brand-dark">Adresse</strong>
-					Kellergasse 12<br>
-					2000 Weinviertel<br>
-					Österreich
-				</div>
-				<div>
-					<strong class="block uppercase tracking-widest mb-3 font-sans text-xs text-brand-dark">Kontakt</strong>
-					Tel: +43 123 456 789<br>
-					Mail: info@presshaus.at
-				</div>
-				<div>
+                <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                     onclick="openLightbox('/images/Schlafzimmer.jpg')">
+                    <img src="/images/Schlafzimmer.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Schlafzimmer">
+                    <div class="text-center text-xs text-gray-500 mt-2">Schlafzimmer</div>
+                </div>
+
+                <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                     onclick="openLightbox('/images/Kueche.jpg')">
+                    <img src="/images/Kueche.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Küche">
+                    <div class="text-center text-xs text-gray-500 mt-2">Küche</div>
+                </div>
+
+                <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                     onclick="openLightbox('/images/Bad.jpg')">
+                    <img src="/images/Bad.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Badezimmer">
+                    <div class="text-center text-xs text-gray-500 mt-2">Badezimmer</div>
+                </div>
+
+                 <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                 onclick="openLightbox('/images/Aussenplatz.jpg')">
+                    <img src="/images/Aussenplatz.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Sitzplatz außen">
+                    <div class="text-center text-xs text-gray-500 mt-2">Gartenplatz</div>
+                </div>
+
+                 <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                 onclick="openLightbox('/images/Radlerrast.jpg')">
+                    <img src="/images/Radlerrast.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Rastplatz">
+                    <div class="text-center text-xs text-gray-500 mt-2">Radlerrast</div>
+                </div>
+
+            </div>
+
+            <button id="scroll-right" class="absolute right-2 md:right-10 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-brand-green p-3 rounded-full shadow-lg transition-all opacity-0 md:opacity-70 group-hover:opacity-100 hidden md:flex items-center justify-center transform hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-bg">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-script text-6xl text-brand-green">Wohnen & Preise</h2>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
+                    Alle Anfragen sind unverbindlich. Die Bezahlung (Bar oder Überweisung) 
+                    und genaue Details klären wir persönlich per E-Mail.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                
+                <div class="bg-white p-8 shadow-xl text-center border-t-4 border-brand-green relative group flex flex-col h-full" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold uppercase tracking-widest mb-4">Presshausgewölbe</h3>
+                    <div class="h-56 bg-gray-200 mb-6 overflow-hidden relative shrink-0">
+                        <img src="/images/Schlafzimmer.jpg" class="w-full h-full object-cover transition transform duration-700 group-hover:scale-110" alt="Zimmer">
+                    </div>
+                    <ul class="space-y-3 text-gray-600 mb-8 font-serif text-lg flex-grow">
+                        <li>50 m² für 2 - 4 Personen</li>
+                        <li>Wohnzimmer mit 2 Schlafsofas</li>
+                        <li>Küche, Bad, WC & Vorraum</li>
+                        <li>eBike-Ladeplatz & Radgarage</li>
+                        <li>Gasthaus & Heuriger (5 Gehminuten)</li>
+                    </ul>
+                    <div class="mt-auto">
+                        <div class="text-3xl text-brand-green font-bold mb-1">ab 120€ <span class="text-sm text-gray-400 font-normal">/ Nacht</span></div>
+                        <div class="text-xs text-gray-400 mb-4">(exkl. Nächtigungstaxe)</div>
+                        
+                        <button onclick="document.getElementById('booking-dialog').showModal()" class="bg-brand-green text-white px-6 py-3 rounded hover:bg-brand-dark transition font-bold uppercase tracking-widest text-sm w-full">
+                            Termin anfragen
+                        </button>
+                        <p class="text-xs text-gray-400 mt-2">Unverbindliche Anfrage</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 shadow-xl text-center border-t-4 border-brand-green relative group flex flex-col h-full" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold uppercase tracking-widest mb-4">Extras</h3>
+                    <div class="h-56 bg-gray-200 mb-6 overflow-hidden relative shrink-0">
+                        <img src="/images/Fruehstueckskorb.jpg" class="w-full h-full object-cover transition transform duration-700 group-hover:scale-110" alt="Frühstück">
+                    </div>
+                    <ul class="space-y-3 text-gray-600 mb-8 font-serif text-lg flex-grow">
+                        <li>Jausenkörbchen (auf Anfrage)</li>
+                        <li>Weinverkostung (auf Anfrage)</li>
+                        <li>Abholung Bahnhof (auf Anfrage)</li>
+                    </ul>
+                    <div class="mt-auto">
+                        <div class="text-3xl text-brand-green font-bold mb-1">Genuss & Natur</div>
+                        <div class="text-xs text-gray-400 mb-4">Preise auf Anfrage</div>
+
+                        <button onclick="document.getElementById('booking-dialog').showModal()" class="border-2 border-brand-green text-brand-green px-6 py-3 rounded hover:bg-brand-green hover:text-white transition font-bold uppercase tracking-widest text-sm w-full">
+                            Dazu buchen
+                        </button>
+                        <p class="text-xs text-gray-400 mt-2">Details werden per Mail geklärt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#e9e6df] py-16 text-center text-brand-text border-t border-[#dcd8ce]">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <h4 class="font-script text-5xl text-brand-green mb-10">Kontakt</h4>
+            
+            <div class="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto text-base leading-loose font-serif">
+                <div>
+                    <strong class="block uppercase tracking-widest mb-3 font-sans text-xs text-brand-dark">Adresse</strong>
+                    Obermarkersdorf 79<br>
+                    2073 Schrattenthal<br>
+                    Österreich
+                </div>
+                <div>
+                    <strong class="block uppercase tracking-widest mb-3 font-sans text-xs text-brand-dark">Kontakt</strong>
+                    Tel: +43 664 7383 1706<br>
+                    Mail: zimmerl.regina@gmail.com
+                </div>
+                <div>
 					<strong class="block uppercase tracking-widest mb-3 font-sans text-xs text-brand-dark">Rechtliches</strong>
-					<a href="#" class="hover:text-brand-green transition">Impressum</a><br>
-					<a href="#" class="hover:text-brand-green transition">Datenschutz</a>
+					<a href="/impressum" class="hover:text-brand-green transition">Impressum</a><br>
+					<a href="/datenschutz" class="hover:text-brand-green transition">Datenschutz</a>
 				</div>
-			</div>
-			
-			<div class="mt-16 opacity-40 text-xs font-sans">
-				&copy; 2025 Presshaus | Made in Austria
-			</div>
-		</div>
-	</footer>
+            </div>
+            
+            <div class="mt-16 opacity-40 text-xs font-sans">
+                &copy; 2026 Presshausgewölbe | Made in Austria
+            </div>
+        </div>
+    </footer>
 
-	<BookingModal />
+    <BookingModal />
 
     <div id="lightbox" class="fixed inset-0 z-50 bg-black/95 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0" 
          onclick="closeLightbox()">
@@ -162,8 +196,8 @@ import BookingModal from '../components/BookingModal.astro';
         <div class="absolute bottom-6 text-white/40 text-xs tracking-widest uppercase">Klicken zum Schließen</div>
     </div>
 
-	<script is:inline>
-        // Lightbox Logic
+    <script is:inline>
+        // --- Lightbox Logic ---
         const lightbox = document.getElementById('lightbox');
         const img = document.getElementById('lightbox-img');
 
@@ -186,6 +220,21 @@ import BookingModal from '../components/BookingModal.astro';
                 img.src = ''; 
             }, 300);
         };
+
+        // --- Galerie Button Logic ---
+        const slider = document.getElementById('gallery-slider');
+        const leftBtn = document.getElementById('scroll-left');
+        const rightBtn = document.getElementById('scroll-right');
+
+        if(slider && leftBtn && rightBtn) {
+            leftBtn.addEventListener('click', () => {
+                slider.scrollBy({ left: -400, behavior: 'smooth' });
+            });
+
+            rightBtn.addEventListener('click', () => {
+                slider.scrollBy({ left: 400, behavior: 'smooth' });
+            });
+        }
     </script>
 
 </Layout>

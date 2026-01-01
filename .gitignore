@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+/.vs/PresshausgewoelbeWebsite/v16/.suo
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/.wrangler/tmp/bundle-eVTRNO/middleware-insertion-facade.js
+/.wrangler/tmp/bundle-eVTRNO/middleware-loader.entry.ts
+/.wrangler/tmp/dev-Qr6uZs/pages-shim.js
+/.wrangler/tmp/dev-Qr6uZs/pages-shim.js.map
