@@ -29,3 +29,7 @@ pnpm-debug.log*
 /.wrangler/tmp/bundle-eVTRNO/middleware-loader.entry.ts
 /.wrangler/tmp/dev-Qr6uZs/pages-shim.js
 /.wrangler/tmp/dev-Qr6uZs/pages-shim.js.map
+/.wrangler/tmp/dev-dV1XdJ/pages-shim.js
+/.wrangler/tmp/dev-dV1XdJ/pages-shim.js.map
+/.wrangler/tmp/bundle-XLKsui/middleware-insertion-facade.js
+/.wrangler/tmp/bundle-XLKsui/middleware-loader.entry.ts
