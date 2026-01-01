@@ -54,39 +54,39 @@ import BookingModal from '../components/BookingModal.astro';
                 </svg>
             </button>
 
-            <div id="gallery-slider" class="flex overflow-x-auto snap-x snap-mandatory gap-6 px-4 pb-8 no-scrollbar items-center scroll-smooth">
+            <div id="gallery-slider" class="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-8 pr-8 no-scrollbar items-center scroll-smooth">
                 
-                <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
                      onclick="openLightbox('/images/Wohnzimmer.jpg')">
                     <img src="/images/Wohnzimmer.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Wohnzimmer">
                     <div class="text-center text-xs text-gray-500 mt-2">Wohnbereich</div>
                 </div>
 
-                <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
                      onclick="openLightbox('/images/Schlafzimmer.jpg')">
                     <img src="/images/Schlafzimmer.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Schlafzimmer">
                     <div class="text-center text-xs text-gray-500 mt-2">Schlafzimmer</div>
                 </div>
 
-                <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
                      onclick="openLightbox('/images/Kueche.jpg')">
                     <img src="/images/Kueche.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Küche">
                     <div class="text-center text-xs text-gray-500 mt-2">Küche</div>
                 </div>
 
-                <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
                      onclick="openLightbox('/images/Bad.jpg')">
                     <img src="/images/Bad.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Badezimmer">
                     <div class="text-center text-xs text-gray-500 mt-2">Badezimmer</div>
                 </div>
 
-                 <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                 <div class="snap-center shrink-0 w-[85vw] md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
                  onclick="openLightbox('/images/Aussenplatz.jpg')">
                     <img src="/images/Aussenplatz.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Sitzplatz außen">
                     <div class="text-center text-xs text-gray-500 mt-2">Gartenplatz</div>
                 </div>
 
-                 <div class="snap-center shrink-0 w-80 md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                 <div class="snap-center shrink-0 w-[85vw] md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
                  onclick="openLightbox('/images/Radlerrast.jpg')">
                     <img src="/images/Radlerrast.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="Rastplatz">
                     <div class="text-center text-xs text-gray-500 mt-2">Radlerrast</div>
@@ -103,7 +103,7 @@ import BookingModal from '../components/BookingModal.astro';
     </section>
 
     <section class="py-24 bg-brand-bg overflow-hidden">
-        <div class="container mx-auto px-4">
+        <div class="container mx-auto px-4 w-full">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="font-script text-6xl text-brand-green">Wohnen & Preise</h2>
                 <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
@@ -112,10 +112,14 @@ import BookingModal from '../components/BookingModal.astro';
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
                 
-                <div class="bg-white p-6 md:p-8 shadow-xl text-center border-t-4 border-brand-green relative group flex flex-col h-full" data-aos="fade-right">
-                    <h3 class="text-2xl font-bold uppercase tracking-widest mb-4">Presshausgewölbe</h3>
+                <div class="w-full max-w-[90vw] mx-auto bg-white p-6 md:p-8 shadow-xl text-center border-t-4 border-brand-green relative group flex flex-col h-full" data-aos="fade-right">
+                    
+                    <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide md:tracking-widest mb-4 break-words">
+                        Presshausgewölbe
+                    </h3>
+                    
                     <div class="h-56 bg-gray-200 mb-6 overflow-hidden relative shrink-0">
                         <img src="/images/Schlafzimmer.jpg" class="w-full h-full object-cover transition transform duration-700 group-hover:scale-110" alt="Zimmer">
                     </div>
@@ -137,8 +141,12 @@ import BookingModal from '../components/BookingModal.astro';
                     </div>
                 </div>
 
-                <div class="bg-white p-6 md:p-8 shadow-xl text-center border-t-4 border-brand-green relative group flex flex-col h-full" data-aos="fade-left">
-                    <h3 class="text-2xl font-bold uppercase tracking-widest mb-4">Extras</h3>
+                <div class="w-full max-w-[90vw] mx-auto bg-white p-6 md:p-8 shadow-xl text-center border-t-4 border-brand-green relative group flex flex-col h-full" data-aos="fade-left">
+                    
+                    <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wide md:tracking-widest mb-4 break-words">
+                        Extras
+                    </h3>
+                    
                     <div class="h-56 bg-gray-200 mb-6 overflow-hidden relative shrink-0">
                         <img src="/images/Fruehstueckskorb.jpg" class="w-full h-full object-cover transition transform duration-700 group-hover:scale-110" alt="Frühstück">
                     </div>
