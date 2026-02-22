@@ -33,9 +33,9 @@ import BookingModal from '../components/BookingModal.astro';
         <div class="max-w-3xl mx-auto" data-aos="fade-up">
             <h2 class="font-script text-6xl text-brand-green mb-6">Die Philosophie</h2>
             <p class="text-lg leading-loose text-gray-600 font-serif">
-                Verbringen Sie erholsame Tage in unserem liebevoll restaurierten Presshaus. 
-                Wo früher Wein gekeltert wurde, finden Sie heute Ruhe, Natur und Geschichte. 
-                Genießen Sie die Ruhe und entdecken Sie die weitläufigen Radwege durch die Reben.
+                Verbringen Sie erholsame Tage in unserem liebevoll restaurierten Presshaus mit Innenhofgarten.
+                Sie finden Ruhe, Natur und Geschichte des Weinbaus im Weinviertler Retzer Land. 
+                Genießen Sie die Weinlandschaft und entdecken Sie dabei die weitläufigen Rad- und Wanderwege.
             </p>
         </div>
     </section>
@@ -92,6 +92,18 @@ import BookingModal from '../components/BookingModal.astro';
                     <div class="text-center text-xs text-gray-500 mt-2">Radlerrast</div>
                 </div>
 
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                 onclick="openLightbox('/images/SV_Weinland.jpg')">
+                    <img src="/images/SV_Weinland.jpg" class="rounded shadow-lg w-full h-64 object-cover" alt="SV_Weinland">
+                    <div class="text-center text-xs text-gray-500 mt-2">SV Weinland Tennisplätze</div>
+                </div>
+
+                <div class="snap-center shrink-0 w-[85vw] md:w-96 cursor-pointer transform hover:scale-105 transition duration-500"
+                 onclick="openLightbox('/images/Weinlandschaft.jpeg')">
+                    <img src="/images/Weinlandschaft.jpeg" class="rounded shadow-lg w-full h-64 object-cover" alt="Weinlandschaft">
+                    <div class="text-center text-xs text-gray-500 mt-2">Weinlandschaft</div>
+                </div>
+
             </div>
 
             <button id="scroll-right" class="absolute right-2 md:right-10 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-brand-green p-3 rounded-full shadow-lg transition-all opacity-0 md:opacity-70 group-hover:opacity-100 hidden md:flex items-center justify-center transform hover:scale-110">
@@ -132,7 +144,7 @@ import BookingModal from '../components/BookingModal.astro';
                     </ul>
                     <div class="mt-auto">
                         <div class="text-3xl text-brand-green font-bold mb-1">ab 120€ <span class="text-sm text-gray-400 font-normal">/ Nacht</span></div>
-                        <div class="text-xs text-gray-400 mb-4">(exkl. Nächtigungstaxe)</div>
+                        <div class="text-xs text-gray-400 mb-4">(exkl. Nächtigungstaxe & Endreinigung)</div>
                         
                         <button onclick="document.getElementById('booking-dialog').showModal()" class="bg-brand-green text-white px-6 py-3 rounded hover:bg-brand-dark transition font-bold uppercase tracking-widest text-sm w-full">
                             Termin anfragen
