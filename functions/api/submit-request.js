@@ -6,44 +6,76 @@ export async function onRequestPost({ request, env }) {
   try {
     const data = await request.json();
 
-    // Basic Validation
-    if (!data.name || !data.email || !data.start) {
-      return new Response(JSON.stringify({ error: "Missing fields" }), { status: 400 });
-    }
-
-    // Call Resend API to send the email
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
+    // 1. Email to you (Admin)
+    const adminEmail = fetch('https://api.resend.com/emails', {
+      method: 'POST',
       headers: {
-        "Authorization": `Bearer ${env.RESEND_API_KEY}`,
-        "Content-Type": "application/json",
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: "Anfrage <onboarding@resend.dev>", // Change this once you verified your own domain
-        to: ["zimart.martin@gmail.com"], // <--- REPLACE THIS WITH YOUR EMAIL
-        subject: `Neue Anfrage Presshaus: ${data.name}`,
+        // Use your verified domain as sender
+        from: "Presshausgewölbe Anfrage <info@presshausgewoelbe.at>",
+        to: "zimmerl.martin@gmail.com", 
+        subject: `Neue Buchungsanfrage von ${data.name}`,
         html: `
-          <div style="font-family: sans-serif; color: #333;">
-            <h2 style="color: #8c9c4c;">Neue Buchungsanfrage</h2>
-            <p><strong>Gast:</strong> ${data.name}</p>
-            <p><strong>Email:</strong> ${data.email}</p>
-            <p><strong>Telefon:</strong> ${data.phone || '-'}</p>
-            <hr>
-            <p><strong>Zeitraum:</strong> ${data.start} bis ${data.end}</p>
-            <p><strong>Hinweis:</strong> Bitte antworte dem Gast direkt via Email.</p>
-          </div>
-        `,
-      }),
+          <h2>Neue Anfrage über die Website</h2>
+          <p><strong>Name:</strong> ${data.name}</p>
+          <p><strong>E-Mail:</strong> ${data.email}</p>
+          <p><strong>Telefon:</strong> ${data.phone || 'Nicht angegeben'}</p>
+          <p><strong>Zeitraum:</strong> ${data.start} bis ${data.end}</p>
+          <p><strong>Nachricht:</strong><br>${data.message || 'Keine Nachricht hinterlassen'}</p>
+        `
+      })
     });
 
-    if (res.ok) {
-      return new Response(JSON.stringify({ success: true }), { status: 200 });
+    // 2. Confirmation email to the Customer
+    const customerEmail = fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        from: "Ferienhaus Presshausgewölbe <info@presshausgewoelbe.at>",
+        to: data.email,
+        subject: "Ihre unverbindliche Anfrage - Ferienhaus Presshausgewölbe",
+        html: `
+          <div style="font-family: sans-serif; line-height: 1.6; color: #333;">
+            <h2>Guten Tag ${data.name},</h2>
+            <p>vielen Dank für Ihr Interesse an unserem Ferienhaus Presshausgewölbe!</p>
+            <p>Wir haben Ihre unverbindliche Anfrage für den Zeitraum vom <strong>${data.start} bis ${data.end}</strong> erhalten.</p>
+            <p>Wir prüfen nun die Verfügbarkeit und melden uns in Kürze persönlich bei Ihnen, um alles Weitere zu besprechen.</p>
+            <br>
+            <p>Herzliche Grüße aus dem Weinviertel,<br>
+            <strong>Ihre Familie Zimmerl</strong></p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            <p style="font-size: 12px; color: #999;">Dies ist eine automatisch generierte Bestätigung Ihrer Anfrage über presshausgewoelbe.at.</p>
+          </div>
+        `
+      })
+    });
+
+    // Send both emails simultaneously
+    const [adminRes, customerRes] = await Promise.all([adminEmail, customerEmail]);
+
+    if (adminRes.ok && customerRes.ok) {
+      return new Response(JSON.stringify({ message: "Emails sent successfully" }), { 
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      });
     } else {
-      const errorText = await res.text();
-      return new Response(JSON.stringify({ error: errorText }), { status: 500 });
+      const error = await adminRes.text();
+      return new Response(JSON.stringify({ error: "Resend API error", details: error }), { 
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-  } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Server Error", message: error.message }), { 
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 }
