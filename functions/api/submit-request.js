@@ -16,7 +16,7 @@ export async function onRequestPost({ request, env }) {
       body: JSON.stringify({
         // Use your verified domain as sender
         from: "Presshausgewölbe Anfrage <info@presshausgewoelbe.at>",
-        to: "zimmerl.martin@gmail.com", 
+        to: "zimmerl.regina@gmail.com", 
         subject: `Neue Buchungsanfrage von ${data.name}`,
         html: `
           <h2>Neue Anfrage über die Website</h2>
